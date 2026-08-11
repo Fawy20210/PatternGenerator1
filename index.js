@@ -10,16 +10,13 @@ class Point {
     }
 }
 
+
+
 let objects = [
-    new Point(250,250,1,1),
-    new Point(250,250,1,0),
-    new Point(250,250,1,-1),
-    new Point(250,250,0,1),
-    new Point(250,250,0,0),
-    new Point(250,250,0,-1),
-    new Point(250,250,-1,1),
     new Point(250,250,-1,0),
-    new Point(250,250,-1,-1),
+    new Point(250,250,1,0),
+    new Point(250,250,0,-1),
+    new Point(250,250,0,1),
 
 ];
 
@@ -31,9 +28,11 @@ function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
 }
 
+
+
 function draw(){
-    let move = getRandomArbitrary(0, 50);
     objects.forEach(obj => {
+        let move = getRandomArbitrary(0, 50);
         ctx.beginPath();
         ctx.moveTo(obj.x,obj.y);
         obj.x += obj.dirx * move;
@@ -42,14 +41,36 @@ function draw(){
         ctx.stroke();
 
 
+        let d = getRandomIntInclusive(0,3);
+        if(obj.dirx==1 || obj.dirx==-1){
+            if(d==0){
+                //nothing
+            } else if(d==1){
+                obj.dirx = 0;
+                obj.diry = 1;
+            } else if(d==2){
+                obj.dirx = 0;
+                obj.diry = -1;
+            }
+        } else{
+            if(d==0){
+                //nothing
+            } else if(d==1){
+                obj.dirx = 1;
+                obj.diry = 0;
+            } else if(d==2){
+                obj.dirx = -1;
+                obj.diry = 0;
+            }
+        }
 
-        obj.dirx += getRandomArbitrary(-1,1);
+        /* obj.dirx += getRandomArbitrary(-1,1);
         obj.diry += getRandomArbitrary(-1,1);
 
         let len = Math.sqrt(obj.dirx**2 + obj.diry**2);
 
         obj.dirx /= len;
-        obj.diry /= len;
+        obj.diry /= len; */
     });
 }
 
