@@ -20,8 +20,9 @@ function getRandomArbitrary(min, max) {
 const CanvasWidth = canvas.clientWidth;
 const CanvasHeight = canvas.clientHeight;
 
-let ObjectCount = 20;
-let iterations = 1000;
+let ObjectCount = 2;
+let iterations = 10;
+let LineLength = 100;
 
 
 let objects = [
@@ -29,14 +30,18 @@ let objects = [
     new Point(250,250,1,0),
     new Point(250,250,0,-1),
     new Point(250,250,0,1), */
+    new Point(250,250,0,-1),
+    new Point(250,250,0,1),
+    new Point(250,250,1,0),
+    new Point(250,250,-1,0),
 
 ];
 
 
 
-for(let i=0; i<ObjectCount; i++){
-    let x = getRandomArbitrary(0,CanvasWidth);
-    let y = getRandomArbitrary(0,CanvasHeight);
+/* for(let i=0; i<ObjectCount; i++){
+    let x = getRandomArbitrary(100,CanvasWidth-100);
+    let y = getRandomArbitrary(100,CanvasHeight-100);
 
     let d = getRandomIntInclusive(0,3);
     let dx = 0;
@@ -47,15 +52,17 @@ for(let i=0; i<ObjectCount; i++){
     if(d == 3) dy = -1;
 
     objects.push(new Point(x,y,dx,dy));
-}
+} */
 
 
 
 
-
-function draw(){
+function draw(iter){
     objects.forEach(obj => {
-        let move = getRandomArbitrary(0, 50);
+        /* let move = getRandomArbitrary(0, 50); */
+        let move = LineLength/iter;
+        
+        
         ctx.beginPath();
         ctx.moveTo(obj.x,obj.y);
         obj.x += obj.dirx * move;
@@ -63,40 +70,49 @@ function draw(){
         ctx.lineTo(obj.x, obj.y);
         ctx.stroke();
 
-
-        let d = getRandomIntInclusive(0,3);
-        if(obj.dirx==1 || obj.dirx==-1){
-            if(d==0){
-                //nothing
-            } else if(d==1){
-                obj.dirx = 0;
-                obj.diry = 1;
-            } else if(d==2){
-                obj.dirx = 0;
-                obj.diry = -1;
-            }
-        } else{
-            if(d==0){
-                //nothing
-            } else if(d==1){
-                obj.dirx = 1;
-                obj.diry = 0;
-            } else if(d==2){
-                obj.dirx = -1;
-                obj.diry = 0;
+        let n = getRandomIntInclusive(0,3);
+        n=1;
+        for(let i=0; i<n; i++){
+            let d = getRandomIntInclusive(0,3);
+            if(obj.dirx==1 || obj.dirx==-1){
+                if(d==0){
+                     objects.push(new Point(obj.x,obj.y,0,1))
+                    objects.push(new Point(obj.x,obj.y,0,-1))
+                    //nothing
+                } else if(d==1){
+                    objects.push(new Point(obj.x,obj.y,0,1))
+                    /* obj.dirx = 0;
+                    obj.diry = 1; */
+                } else if(d==2){
+                    objects.push(new Point(obj.x,obj.y,0,-1))
+                    /* obj.dirx = 0;
+                    obj.diry = -1; */
+                }
+            } else{
+                if(d==0){
+                     objects.push(new Point(obj.x,obj.y,-1,0))
+                    objects.push(new Point(obj.x,obj.y,1,0)) 
+                    //nothing
+                } else if(d==1){
+                    objects.push(new Point(obj.x,obj.y,1,0))
+                    /* obj.dirx = 1;
+                    obj.diry = 0; */
+                } else if(d==2){
+                    objects.push(new Point(obj.x,obj.y,-1,0))
+                    /* obj.dirx = -1;
+                    obj.diry = 0; */
+                }
             }
         }
-
-        /* obj.dirx += getRandomArbitrary(-1,1);
-        obj.diry += getRandomArbitrary(-1,1);
-
-        let len = Math.sqrt(obj.dirx**2 + obj.diry**2);
-
-        obj.dirx /= len;
-        obj.diry /= len; */
     });
 }
+/* let i=0;
+let inter = setInterval(()=>{
+    draw(i+1);
+    i++;
+    if(i==iterations) clearInterval(inter);
 
-for(let i=0; i<10000; i++){
-    draw();
-}
+}, 1000); */
+for(let i=0; i<iterations; i++){
+    draw(i+1);
+} 
