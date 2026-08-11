@@ -10,23 +10,46 @@ class Point {
     }
 }
 
-
-
-let objects = [
-    new Point(250,250,-1,0),
-    new Point(250,250,1,0),
-    new Point(250,250,0,-1),
-    new Point(250,250,0,1),
-
-];
-
-
 function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
 }
+
+const CanvasWidth = canvas.clientWidth;
+const CanvasHeight = canvas.clientHeight;
+
+let ObjectCount = 20;
+let iterations = 1000;
+
+
+let objects = [
+    /* new Point(250,250,-1,0),
+    new Point(250,250,1,0),
+    new Point(250,250,0,-1),
+    new Point(250,250,0,1), */
+
+];
+
+
+
+for(let i=0; i<ObjectCount; i++){
+    let x = getRandomArbitrary(0,CanvasWidth);
+    let y = getRandomArbitrary(0,CanvasHeight);
+
+    let d = getRandomIntInclusive(0,3);
+    let dx = 0;
+    let dy = 0;
+    if(d == 0) dx = 1;
+    if(d == 1) dx = -1;
+    if(d == 2) dy = 1;
+    if(d == 3) dy = -1;
+
+    objects.push(new Point(x,y,dx,dy));
+}
+
+
 
 
 
