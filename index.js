@@ -24,7 +24,8 @@ const CanvasHeight = canvas.clientHeight;
 
 let ObjectCount = 2;
 let iterations = 15;
-let LineLength = 750;
+let LineLength = 50;
+let randomStarts = true;
 
 
 let objects = [
@@ -40,21 +41,23 @@ let objects = [
 ];
 
 
+if(randomStarts){
+    objects = [];
+    for(let i=0; i<ObjectCount; i++){
+        let x = getRandomArbitrary(0,CanvasWidth);
+        let y = getRandomArbitrary(0,CanvasHeight);
 
-/* for(let i=0; i<ObjectCount; i++){
-    let x = getRandomArbitrary(100,CanvasWidth-100);
-    let y = getRandomArbitrary(100,CanvasHeight-100);
+        let d = getRandomIntInclusive(0,3);
+        let dx = 0;
+        let dy = 0;
+        if(d == 0) dx = 1;
+        if(d == 1) dx = -1;
+        if(d == 2) dy = 1;
+        if(d == 3) dy = -1;
 
-    let d = getRandomIntInclusive(0,3);
-    let dx = 0;
-    let dy = 0;
-    if(d == 0) dx = 1;
-    if(d == 1) dx = -1;
-    if(d == 2) dy = 1;
-    if(d == 3) dy = -1;
-
-    objects.push(new Point(x,y,dx,dy));
-} */
+        objects.push(new Point(x,y,dx,dy));
+    }
+}
 
 
 
