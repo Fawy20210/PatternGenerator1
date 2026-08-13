@@ -125,6 +125,7 @@ generateButton.addEventListener("click", () => {
     canvas.height = document.getElementById("resy").value;
     objectCount = document.getElementById("objectCount").value;
     iterations = document.getElementById("iterations").value;
+    LineLength = document.getElementById("lineLength").value;
 
     let CanvasWidth = canvas.clientWidth;
     let CanvasHeight = canvas.clientHeight;
