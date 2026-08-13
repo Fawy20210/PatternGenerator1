@@ -32,10 +32,10 @@ let objects = [
     new Point(250,250,1,0),
     new Point(250,250,0,-1),
     new Point(250,250,0,1), */
-    new Point(2500,2500,0,-1),
-    new Point(2500,2500,0,1),
-    new Point(2500,2500,1,0),
-    new Point(2500,2500,-1,0),
+    new Point(CanvasWidth/2,CanvasHeight/2,0,-1),
+    new Point(CanvasWidth/2,CanvasHeight/2,0,1),
+    new Point(CanvasWidth/2,CanvasHeight/2/2,1,0),
+    new Point(CanvasWidth/2,CanvasHeight/2,-1,0),
 
 ];
 
@@ -115,6 +115,8 @@ let inter = setInterval(()=>{
     if(i==iterations) clearInterval(inter);
 
 }, 1000); */
+/* 
+ctx.scale(CanvasWidth/MyWidth,CanvasHeight/MyHeight); */
 
 for(let i=0; i<iterations; i++){
     draw(i+1);
