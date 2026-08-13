@@ -1,0 +1,9 @@
+button {
+    height: 10vh;
+    width: 100vw; /* vw */
+    font-size: 8vh;
+}
+/* canvas {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+} */
