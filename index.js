@@ -1,3 +1,4 @@
+const download = document.getElementById("download");
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
@@ -20,9 +21,10 @@ function getRandomArbitrary(min, max) {
 const CanvasWidth = canvas.clientWidth;
 const CanvasHeight = canvas.clientHeight;
 
+
 let ObjectCount = 2;
-let iterations = 10;
-let LineLength = 100;
+let iterations = 15;
+let LineLength = 750;
 
 
 let objects = [
@@ -30,10 +32,10 @@ let objects = [
     new Point(250,250,1,0),
     new Point(250,250,0,-1),
     new Point(250,250,0,1), */
-    new Point(250,250,0,-1),
-    new Point(250,250,0,1),
-    new Point(250,250,1,0),
-    new Point(250,250,-1,0),
+    new Point(2500,2500,0,-1),
+    new Point(2500,2500,0,1),
+    new Point(2500,2500,1,0),
+    new Point(2500,2500,-1,0),
 
 ];
 
@@ -113,6 +115,18 @@ let inter = setInterval(()=>{
     if(i==iterations) clearInterval(inter);
 
 }, 1000); */
+
 for(let i=0; i<iterations; i++){
     draw(i+1);
 } 
+
+download.addEventListener("click", () => {
+    canvas.toBlob((blob) => {
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.download = `test`;
+        link.href = url;
+        link.click();
+        setTimeout(() => URL.revokeObjectURL(url), 100); // kurz warten
+    }, 'image/png');
+});
