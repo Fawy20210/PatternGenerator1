@@ -29,7 +29,7 @@ function getRandomArbitrary(min, max) {
 
 
 
-let ObjectCount = 2;
+let objectCount = 2;
 let iterations = 15;
 let LineLength = 50;
 let randomStarts = true;
@@ -131,7 +131,7 @@ generateButton.addEventListener("click", () => {
     ctx.clearRect(0,0,CanvasWidth,CanvasWidth);
     if(checkbox.checked){
         objects = [];
-        for(let i=0; i<ObjectCount; i++){
+        for(let i=0; i<objectCount; i++){
             let x = getRandomArbitrary(0,CanvasWidth);
             let y = getRandomArbitrary(0,CanvasHeight);
 
