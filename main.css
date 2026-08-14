@@ -36,10 +36,17 @@ div {
     justify-content: center;
     gap: 10%;
 } */
+canvas {
+    border: 1px solid black;
+}
 
 #startingPoints-container {
     display: none;
 }
 #download {
     display: none;
+}
+.button-container {
+    display: flex;
+    flex-direction: row;
 }

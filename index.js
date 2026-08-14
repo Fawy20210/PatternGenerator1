@@ -159,7 +159,7 @@ generateButton.addEventListener("click", () => {
     for(let i=0; i<iterations; i++){
         draw(i+1);
     }
-
+    download.style.display = "block";
 });
 
 download.addEventListener("click", () => {
