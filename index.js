@@ -150,7 +150,7 @@ generateButton.addEventListener("click", () => {
         objects = [
             new Point(CanvasWidth/2,CanvasHeight/2,0,-1),
             new Point(CanvasWidth/2,CanvasHeight/2,0,1),
-            new Point(CanvasWidth/2,CanvasHeight/2/2,1,0),
+            new Point(CanvasWidth/2,CanvasHeight/2,1,0),
             new Point(CanvasWidth/2,CanvasHeight/2,-1,0),
         ]
     }
