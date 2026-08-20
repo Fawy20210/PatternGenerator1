@@ -4,6 +4,7 @@ It works by remembering the position and the direction every points is facing, a
 
 ## How to use it
 Go to the [Github Page](https://fawy20210.github.io/PatternGenerator1/), and play around with the different values a bit.
+To generate the Pattern, press the Generate button, and to then download it, press the download button.
 
 ## Parameters
 ### The width of the image in pixels: 
@@ -36,4 +37,6 @@ What colour the lines should be.
 How wide the preview on the website should be in pixels
 ### The height of the preview in pixels:
 How high the preview on the website should be in pixels
+
+
 
