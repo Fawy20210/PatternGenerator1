@@ -4,7 +4,9 @@ const objectCount = Number(document.getElementById("objectCount").textContent);
 const iterations = Number(document.getElementById("download").textContent); */
 
 const checkbox = document.getElementById("mode");
+const transparentMode = document.getElementById("transparentMode");
 const startingPointsContainer  = document.getElementById("startingPoints-container");
+const backgroundColorContainer  = document.getElementById("backgroundColor-container");
 const generateButton = document.getElementById("generate");
 const download = document.getElementById("download");
 const canvas = document.getElementById("canvas");
@@ -119,6 +121,10 @@ checkbox.addEventListener("click", () => {
     if(checkbox.checked) startingPointsContainer.style.display="block";
     else startingPointsContainer.style.display="none";
 });
+transparentMode.addEventListener("click", () => {
+    if(transparentMode.checked) backgroundColorContainer.style.display="none";
+    else backgroundColorContainer.style.display="block";
+});
 
 generateButton.addEventListener("click", () => {
     console.log(ctx.lineWidth);
@@ -136,6 +142,11 @@ generateButton.addEventListener("click", () => {
     let CanvasWidth = canvas.clientWidth;
     let CanvasHeight = canvas.clientHeight;
     ctx.clearRect(0,0,CanvasWidth,CanvasWidth);
+    if(!transparentMode.checked) {
+        ctx.fillStyle = document.getElementById("backgroundColor").value;
+        ctx.fillRect(0,0,CanvasWidth,CanvasHeight);
+    }
+    ctx.fillStyle = document.getElementById("lineColor").value;
     //ctx.scale(outX/CanvasWidth,outY/CanvasHeight);
     if(checkbox.checked){
         objects = [];

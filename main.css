@@ -43,6 +43,9 @@ canvas {
 #startingPoints-container {
     display: none;
 }
+#backgroundColor-container {
+    display: block;
+}
 #download {
     display: none;
 }
