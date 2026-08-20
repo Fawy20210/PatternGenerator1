@@ -37,7 +37,7 @@ div {
     gap: 10%;
 } */
 canvas {
-    border: 1px solid black;
+    visibility: hidden;
 }
 
 #startingPoints-container {

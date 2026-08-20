@@ -121,15 +121,22 @@ checkbox.addEventListener("click", () => {
 });
 
 generateButton.addEventListener("click", () => {
+    console.log(ctx.lineWidth);
     canvas.width = document.getElementById("resx").value;
     canvas.height = document.getElementById("resy").value;
     objectCount = document.getElementById("objectCount").value;
     iterations = document.getElementById("iterations").value;
     LineLength = document.getElementById("lineLength").value;
+    ctx.lineWidth = document.getElementById("thickness").value;
+
+    let outX = document.getElementById("resOutx").value;
+    let outY = document.getElementById("resOuty").value;
+
 
     let CanvasWidth = canvas.clientWidth;
     let CanvasHeight = canvas.clientHeight;
     ctx.clearRect(0,0,CanvasWidth,CanvasWidth);
+    //ctx.scale(outX/CanvasWidth,outY/CanvasHeight);
     if(checkbox.checked){
         objects = [];
         for(let i=0; i<objectCount; i++){
@@ -155,10 +162,28 @@ generateButton.addEventListener("click", () => {
         ]
     }
 
-    //canvas.style.display = "block";
+
     for(let i=0; i<iterations; i++){
         draw(i+1);
     }
+    //canvas.style.display = "block";
+
+    /* canvas.toBlob((blob) => {
+        const url = URL.createObjectURL(blob);
+        let imageFoo = document.getElementById('img');
+        imageFoo.src = url;
+
+        setTimeout(() => URL.revokeObjectURL(url), 100); // kurz warten
+    }, 'image/png'); */
+
+    let dataUrl = canvas.toDataURL();
+    let imageFoo = document.getElementById('img');
+    imageFoo.src = dataUrl;
+    imageFoo.style.width = `${outX}px`;
+    imageFoo.style.height = `${outY}px`;
+
+    //canvas.style.display = "none";
+
     download.style.display = "block";
 });
 
@@ -166,7 +191,7 @@ download.addEventListener("click", () => {
     canvas.toBlob((blob) => {
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
-        link.download = `test`;
+        link.download = `LinePattern-${new Date().toISOString().replace('T','-').split('.')[0]}.png`;
         link.href = url;
         link.click();
         setTimeout(() => URL.revokeObjectURL(url), 100); // kurz warten
