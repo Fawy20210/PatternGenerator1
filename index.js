@@ -146,7 +146,7 @@ generateButton.addEventListener("click", () => {
         ctx.fillStyle = document.getElementById("backgroundColor").value;
         ctx.fillRect(0,0,CanvasWidth,CanvasHeight);
     }
-    ctx.fillStyle = document.getElementById("lineColor").value;
+    ctx.strokeStyle = document.getElementById("lineColor").value;
     //ctx.scale(outX/CanvasWidth,outY/CanvasHeight);
     if(checkbox.checked){
         objects = [];
